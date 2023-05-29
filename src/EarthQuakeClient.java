@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class EarthQuakeClient {
     public EarthQuakeClient() {
@@ -44,7 +46,20 @@ public class EarthQuakeClient {
     public ArrayList<QuakeEntry> filterByPhrase(ArrayList<QuakeEntry> quakeData, String where, String phrase){
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         for(QuakeEntry qe : quakeData){
+            if(where.equals("start")){
+                if(qe.getInfo().substring(0, phrase.length()).equals(phrase)){
+                    answer.add(qe);
+                }
+            } else if(where.equals("end")){
+                if(qe.getInfo().endsWith(phrase)){
+                    answer.add(qe);
+                }
 
+            } else if(where.equals("any")){
+                if(qe.getInfo().contains(phrase)){
+                    answer.add(qe);
+                }
+            }
         }
         return answer;
     }
@@ -122,8 +137,21 @@ public class EarthQuakeClient {
 
     }
 
+    public void quakesByPhrase(){
+        EarthQuakeParser parser = new EarthQuakeParser();
+        String source = "data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
+        ArrayList<QuakeEntry> quakesFiltered = filterByPhrase(list, "start", "Explosion");
+        System.out.println("read data for "+list.size()+" quakes");
+        for(QuakeEntry qe : quakesFiltered){
+            System.out.println(qe);
+        }
+        System.out.println("Found " + quakesFiltered.size() + " quakes that match that criteria");
+
+    }
+
     public static void main(String[] args) {
         EarthQuakeClient ec = new EarthQuakeClient();
-        ec.quakesOfDepth();
+        ec.quakesByPhrase();
     }
 }

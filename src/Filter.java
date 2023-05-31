@@ -2,8 +2,8 @@
 /**
  * Write a description of interface Filter here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @jphwang212
+ * @20230531
  */
 public interface Filter
 {

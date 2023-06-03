@@ -128,7 +128,7 @@ public class EarthQuakeClient {
         String source = "data/nov20quakedata.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
-        ArrayList<QuakeEntry> quakesInDepth = filterByDepth(list, -8000.0, -5000.0);
+        ArrayList<QuakeEntry> quakesInDepth = filterByDepth(list, -4000.0, -2000.0);
         System.out.println("read data for "+list.size()+" quakes");
         for(QuakeEntry qe : quakesInDepth){
             System.out.println(qe);
@@ -141,7 +141,7 @@ public class EarthQuakeClient {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
-        ArrayList<QuakeEntry> quakesFiltered = filterByPhrase(list, "any", "Creek");
+        ArrayList<QuakeEntry> quakesFiltered = filterByPhrase(list, "any", "Can");
         System.out.println("read data for "+list.size()+" quakes");
         for(QuakeEntry qe : quakesFiltered){
             System.out.println(qe);
@@ -153,5 +153,6 @@ public class EarthQuakeClient {
     public static void main(String[] args) {
         EarthQuakeClient ec = new EarthQuakeClient();
         ec.quakesByPhrase();
+//        ec.quakesOfDepth();
     }
 }

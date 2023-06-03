@@ -1,9 +1,11 @@
 public class PhraseFilter implements Filter {
     private String type;
     private String phrase;
-    public PhraseFilter(String where, String search){
+    private String filterName;
+    public PhraseFilter(String where, String search, String name){
         type = where;
         phrase = search;
+        filterName = name;
     }
     public boolean satisfies(QuakeEntry qe){
         String entry = qe.getInfo();
@@ -15,5 +17,8 @@ public class PhraseFilter implements Filter {
             return entry.contains(phrase);
         }
         return false;
+    }
+    public String getName(){
+        return filterName;
     }
 }

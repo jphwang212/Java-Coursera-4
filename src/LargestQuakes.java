@@ -6,7 +6,7 @@ public class LargestQuakes {
 //        String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size());
-        ArrayList<QuakeEntry> largestQuakes = getLargest(list, 5);
+        ArrayList<QuakeEntry> largestQuakes = getLargest(list, 50);
         for(QuakeEntry qe : largestQuakes){
             System.out.println(qe);
         }

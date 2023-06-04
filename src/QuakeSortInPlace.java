@@ -115,14 +115,14 @@ public class QuakeSortInPlace {
 //        String source = "data/nov20quakedatasmall.atom";
         //String source = "data/nov20quakedata.atom";
 //        String source = "data/earthquakeDataSampleSix2.atom";
-        String source = "data/earthQuakeDataDec6sample1.atom";
+        String source = "data/earthQuakeDataWeekDec6sample1.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);  
        
         System.out.println("read data for "+list.size()+" quakes");    
 //        sortByMagnitude(list);
-        sortByLargestDepth(list);
+//        sortByLargestDepth(list);
 //        sortByMagnitudeWithBubbleSort(list);
-//        sortByMagnitudeWithBubbleSortWithCheck(list);
+        sortByMagnitudeWithBubbleSortWithCheck(list);
 //        sortByMagnitudeWithCheck(list);
         for (QuakeEntry qe: list) { 
             System.out.println(qe);
@@ -160,4 +160,11 @@ public class QuakeSortInPlace {
  * 3 2 7 8 1 4 | 2 3 1 7 4 8
  * 3 2 7 1 8 4 | 2 3 1 4 7 8
  * 3 2 7 1 4 8 |
+ *
+ * 1 4 5 9 8 2
+ * 1 2 5 9 8 4
+ *
+ * 2 4 5 9 8 1 | 2 4 5 1 8 9
+ * 2 4 5 8 9 1 |
+ * 2 4 5 8 1 9 |
  */

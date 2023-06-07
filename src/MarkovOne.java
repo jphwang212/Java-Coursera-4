@@ -32,8 +32,8 @@ public class MarkovOne {
 
     public ArrayList<Character> getFollows(String key){
         ArrayList<Character> following = new ArrayList<Character>();
-        for(int i = 0; i < (myText.length() - key.length()); i++){
-            if(myText.substring(i, key.length()).equals(key)){
+        for(int i = 0; i < (myText.length() - key.length() - 1); i++){
+            if(myText.substring(i, i + key.length()).equals(key)){
                 following.add(myText.charAt(i + key.length() + 1));
             }
         }

@@ -16,10 +16,12 @@ public class MarkovRunner {
 		MarkovOne markov = new MarkovOne();
 		markov.setTraining(st);
 		markov.setRandom(42);
-		for(int k=0; k < 3; k++){
-			String text = markov.getRandomText(500);
-			printOut(text);
-		}
+		String text = markov.getRandomText(500);
+		printOut(text);
+//		for(int k=0; k < 3; k++){
+//			String text = markov.getRandomText(500);
+//			printOut(text);
+//		}
 	}
     public void runMarkovZero() {
 		FileResource fr = new FileResource();
@@ -33,7 +35,7 @@ public class MarkovRunner {
 			printOut(text);
 		}
 	}
-	
+
 	private void printOut(String s){
 		String[] words = s.split("\\s+");
 		int psize = 0;
@@ -48,5 +50,10 @@ public class MarkovRunner {
 		}
 		System.out.println("\n----------------------------------");
 	}
-	
+
+	public static void main(String[] args) {
+		MarkovRunner mr = new MarkovRunner();
+		mr.runMarkovOne();
+	}
+
 }

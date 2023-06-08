@@ -6,7 +6,7 @@ public class Tester {
     public void testGetFollows(){
         MarkovOne mk = new MarkovOne();
         mk.setTraining("this is a test yes this is a test.");
-        ArrayList<Character> follows = mk.getFollows("t");
+        ArrayList<String> follows = mk.getFollows("t");
         System.out.println(follows.size());
     }
     public void testGetFollowsWithFile(){
@@ -14,7 +14,7 @@ public class Tester {
         String trainText = fr.asString();
         MarkovOne mk = new MarkovOne();
         mk.setTraining(trainText);
-        ArrayList<Character> follows = mk.getFollows("t");
+        ArrayList<String> follows = mk.getFollows("t");
         System.out.println("Size = " + follows.size());
     }
 

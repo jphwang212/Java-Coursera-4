@@ -21,21 +21,38 @@ public class MarkovOne {
         if (myText == null){
             return "";
         }
+        int index = myRandom.nextInt(myText.length() - 1);
+        String key = myText.substring(index, index + 1);
         StringBuilder sb = new StringBuilder();
-        for(int k=0; k < numChars; k++){
-            int index = myRandom.nextInt(myText.length());
-            sb.append(myText.charAt(index));
+        sb.append(key);
+        for(int k=0; k < numChars - 1; k++){
+            ArrayList<String> follows = getFollows(key);
+            if (follows.size() == 0){
+                break;
+            }
+            index = myRandom.nextInt(follows.size());
+            String next = follows.get(index);
+            sb.append(next);
+            key = next;
         }
 
         return sb.toString();
     }
 
-    public ArrayList<Character> getFollows(String key){
-        ArrayList<Character> following = new ArrayList<Character>();
-        for(int i = 0; i < (myText.length() - key.length() - 1); i++){
-            if(myText.substring(i, i + key.length()).equals(key)){
-                following.add(myText.charAt(i + key.length() + 1));
+    public ArrayList<String> getFollows(String key){
+        ArrayList<String> following = new ArrayList<String>();
+        int pos = 0;
+        while(pos < myText.length()){
+            int start = myText.indexOf(key, pos);
+            if(start == -1){
+                break;
             }
+            if(start + key.length() >= myText.length() - 1){
+                break;
+            }
+            String next = myText.substring(start + key.length(), start + key.length() + 1);
+            following.add(next);
+            pos = start + key.length();
         }
         return following;
     }

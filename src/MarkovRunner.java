@@ -9,6 +9,26 @@
 import edu.duke.*;
 
 public class MarkovRunner {
+	public void runMarkovModel(){
+		FileResource fr = new FileResource();
+		String st = fr.asString();
+		st = st.replace('\n', ' ');
+		MarkovModel mk = new MarkovModel(6);
+		mk.setTraining(st);
+		mk.setRandom(38);
+		String text = mk.getRandomText(500);
+		printOut(text);
+	}
+	public void runMarkovFour(){
+		FileResource fr = new FileResource();
+		String st = fr.asString();
+		st = st.replace('\n', ' ');
+		MarkovFour mk = new MarkovFour();
+		mk.setTraining(st);
+		mk.setRandom(25);
+		String text = mk.getRandomText(500);
+		printOut(text);
+	}
 	public void runMarkovOne() {
 		FileResource fr = new FileResource();
 		String st = fr.asString();
@@ -53,7 +73,9 @@ public class MarkovRunner {
 
 	public static void main(String[] args) {
 		MarkovRunner mr = new MarkovRunner();
-		mr.runMarkovOne();
+//		mr.runMarkovOne();
+//		mr.runMarkovFour();
+		mr.runMarkovModel();
 	}
 
 }

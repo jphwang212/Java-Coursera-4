@@ -14,7 +14,7 @@ public class Tester {
         String trainText = fr.asString();
         MarkovOne mk = new MarkovOne();
         mk.setTraining(trainText);
-        ArrayList<String> follows = mk.getFollows("t");
+        ArrayList<String> follows = mk.getFollows("th");
         System.out.println("Size = " + follows.size());
     }
 
